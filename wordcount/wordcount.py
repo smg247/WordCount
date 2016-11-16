@@ -1,12 +1,16 @@
 import re
 import time
 import operator
+import sys
 
 counts = {}
 
 def run():
     start = time.clock()
-    count_words('../words.txt')
+
+    for file in sys.argv:
+        count_words(file)
+
     end = time.clock()
     print order_by_occurrences()
     total = end - start
