@@ -1,11 +1,21 @@
 import re
+import time
+import operator
+
+counts = {}
+
 def run():
+    start = time.clock()
     count_words('../words.txt')
+    end = time.clock()
+    print order_by_occurrences()
+    total = end - start
+    print 'counted all words in ' + unicode(total) + ' seconds'
 
 
 def count_words(file_name):
     alpha_only = re.compile('[^a-zA-Z]')
-    counts = {}
+
     word_file = open(file_name)
     for line in word_file:
         for word in line.split():
@@ -16,6 +26,8 @@ def count_words(file_name):
                 else:
                     counts[word] = 1
 
-    print counts
+
+def order_by_occurrences():
+    return sorted(counts.items(), key=operator.itemgetter(1), reverse=True)
 
 run()
