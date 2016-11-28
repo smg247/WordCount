@@ -12,7 +12,7 @@ def run():
         count_words(file)
 
     end = time.clock()
-    print_counts()
+    finalize_and_print()
     total = end - start
     print 'counted all words in ' + unicode(total) + ' seconds'
 
@@ -31,7 +31,7 @@ def count_words(file_name):
         line_number += 1
 
 
-def print_counts():
+def finalize_and_print():
     for key in words.keys():
         line_to_num_occurrences = {}
         occurrences_of_word = words.get(key)
